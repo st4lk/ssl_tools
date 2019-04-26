@@ -25,18 +25,24 @@ decode-cert:
 	bash $(SCRIPTS_PATH)/decode_cert.sh $(CERT_PEM)
 
 issue-self-signed-cert:
-	bash scripts/issue_root_self_signed.sh
+	bash $(SCRIPTS_PATH)/issue_root_self_signed.sh
 
 create-cert-request:
-	bash scripts/create_cert_request.sh
+	bash $(SCRIPTS_PATH)/create_cert_request.sh
 
 sign-cert:
-	bash scripts/sign_cert.sh
+	bash $(SCRIPTS_PATH)/sign_cert.sh
 
 generate-server-certs: issue-self-signed-cert create-cert-request sign-cert
 
 hash-cert:
 	bash $(SCRIPTS_PATH)/hash_cert.sh $(CERT_PEM)
+
+extract-public-key:
+	bash $(SCRIPTS_PATH)/extract_public_key.sh $(CERT_PEM)
+
+extract-signature:
+	bash $(SCRIPTS_PATH)/extract_signature.sh $(CERT_PEM)
 
 # --------------- #
 # python commands #

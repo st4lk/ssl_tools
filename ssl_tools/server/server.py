@@ -3,11 +3,6 @@ import http.server
 import os
 import ssl
 
-# BASE_DIR = os.path.dirname(os.path.realpath(__file__))
-# CERT_DIR = os.path.join(BASE_DIR, '..', 'output', 'server_certificates')
-# CERTIFICATE_PEM_FILE = os.path.join(CERT_DIR, 'server-cert.pem')
-# PRIVATE_KEY_FILE = os.path.join(CERT_DIR, 'server-key.pem')
-
 parser = argparse.ArgumentParser()
 parser.add_argument('cert_file')
 parser.add_argument('key_file')

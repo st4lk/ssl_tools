@@ -201,3 +201,15 @@ Commands
     ```bash
     echo -n 'my own message' | FILE_WITH_SIGNATURE=output/data_signature.bin make rsa-verify
     ```
+
+- **Extract public key from certificate**
+
+    ```bash
+    CERT_PEM=output/certificate_00.pem make extract-public-key > output/extracted_public_key.pem
+    ```
+
+- **Extract signature from certificate**
+
+    ```bash
+    CERT_PEM=output/certificate_00.pem make extract-signature > output/extracted_signature.pem
+    ```
