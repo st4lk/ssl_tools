@@ -22,9 +22,10 @@ Choose whatever you like:
     Shell inside docker:
 
     ```bash
-    cd /ssl_tools
     python -m venv venv  # only first time
     source venv/bin/activate
+
+    make show-cert
     ```
 
     To open another shell to already running docker container:
@@ -57,7 +58,6 @@ Choose whatever you like:
 
     ```bash
     cd ssl_tools/ssl_tools
-
     python3 -m venv venv  # python >= 3.6 is expected
     source venv/bin/activate
 
@@ -205,11 +205,23 @@ Commands
 - **Extract public key from certificate**
 
     ```bash
-    CERT_PEM=output/certificate_00.pem make extract-public-key > output/extracted_public_key.pem
+    CERT_PEM=output/certificate_01.pem make extract-public-key > output/certificate_01_public_key.pem
     ```
 
 - **Extract signature from certificate**
 
     ```bash
-    CERT_PEM=output/certificate_00.pem make extract-signature > output/extracted_signature.pem
+    CERT_PEM=output/certificate_00.pem make extract-signature > output/certificate_00_signature.bin
+    ```
+
+- **Decrypt signature**
+
+    ```bash
+    PUBLIC_KEY=output/certificate_01_public_key.pem SIGNATURE=output/certificate_00_signature.bin make decrypt-signature
+    ```
+
+- **Calculate digest of certificate**
+
+    ```bash
+    CERT_PEM=output/certificate_00.pem make calc-digest
     ```

@@ -8,5 +8,6 @@ RUN useradd -ms /bin/bash ssluser
 RUN chown -R ssluser:ssluser /ssl_tools
 
 USER ssluser
+WORKDIR /ssl_tools
 
 CMD bash

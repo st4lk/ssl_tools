@@ -39,10 +39,16 @@ hash-cert:
 	bash $(SCRIPTS_PATH)/hash_cert.sh $(CERT_PEM)
 
 extract-public-key:
-	bash $(SCRIPTS_PATH)/extract_public_key.sh $(CERT_PEM)
+	@bash $(SCRIPTS_PATH)/extract_public_key.sh $(CERT_PEM)
 
 extract-signature:
-	bash $(SCRIPTS_PATH)/extract_signature.sh $(CERT_PEM)
+	@bash $(SCRIPTS_PATH)/extract_signature.sh $(CERT_PEM)
+
+decrypt-signature:
+	bash $(SCRIPTS_PATH)/decrypt_signature.sh $(PUBLIC_KEY) $(SIGNATURE)
+
+calc-digest:
+	bash $(SCRIPTS_PATH)/extract_body.sh $(CERT_PEM) | bash $(SCRIPTS_PATH)/calc_digest.sh
 
 # --------------- #
 # python commands #
