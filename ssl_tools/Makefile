@@ -83,6 +83,9 @@ rsa-sign: install-py create-pycrypt-dirs
 rsa-verify: install-py create-pycrypt-dirs
 	python $(PYCRYPT_PATH)/verify_rsa.py $(PYCRYPT_PUBLIC_KEY) $(FILE_WITH_SIGNATURE)
 
+rsa-verify-cert: install-py create-pycrypt-dirs
+	python $(PYCRYPT_PATH)/verify_rsa_x509.py $(PUBLIC_KEY) $(CERT_PEM)
+
 install-py: .install-py
 .install-py:
 	pip install -r requirements.txt

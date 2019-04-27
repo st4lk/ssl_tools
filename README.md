@@ -225,3 +225,9 @@ Commands
     ```bash
     CERT_PEM=output/certificate_00.pem make calc-digest
     ```
+
+- **Verify certificate without using openssl**
+
+    ```bash
+    PUBLIC_KEY=output/certificate_01_public_key.pem CERT_PEM=output/certificate_00.pem make rsa-verify-cert
+    ```
