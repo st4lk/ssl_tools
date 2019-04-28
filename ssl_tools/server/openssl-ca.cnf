@@ -1,7 +1,7 @@
 HOME            = .
 RANDFILE        = $ENV::HOME/.rnd
-CERT_DIR        = $ENV::HOME/output/server_certificates
-DB_DIR          = $ENV::HOME/output/.openssl_db
+CERT_DIR        = output/server_certificates
+DB_DIR          = output/.openssl_db
 
 ####################################################################
 [ ca ]
@@ -65,7 +65,7 @@ emailAddress_default = test@example.com
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always, issuer
 basicConstraints       = critical, CA:true
-keyUsage               = keyCertSign, cRLSign
+keyUsage               = digitalSignature, keyCertSign, cRLSign
 
 
 ####################################################################

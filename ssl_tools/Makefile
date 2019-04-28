@@ -8,9 +8,8 @@ OUT_PATH ?= output
 PYCRYPT_PATH ?= python_cryptography
 PYCRYPT_OUT_PATH ?= $(OUT_PATH)/pycrypt
 PYCRYPT_PRIVATE_KEY ?= $(PYCRYPT_OUT_PATH)/key_private.pem
-PYCRYPT_PUBLIC_KEY ?= $(PYCRYPT_OUT_PATH)/key_public.pem
-SERVER_CERT ?= $(OUT_PATH)/server_certificates/server-cert.pem
-SERVER_KEY ?= $(OUT_PATH)/server_certificates/server-key.pem
+CA_PATH ?= "0"
+CA_FILE ?= "0"
 
 clean:
 	rm -rf .install-py
@@ -36,10 +35,13 @@ sign-cert:
 generate-server-certs: issue-self-signed-cert create-cert-request sign-cert
 
 show-hash-cert:
-	bash $(SCRIPTS_PATH)/show_hash_cert.sh $(CERT_PEM)
+	@bash $(SCRIPTS_PATH)/show_hash_cert.sh $(CERT_PEM)
 
 show-hash-cert-issuer:
-	bash $(SCRIPTS_PATH)/show_hash_issuer_cert.sh $(CERT_PEM)
+	@bash $(SCRIPTS_PATH)/show_hash_issuer_cert.sh $(CERT_PEM)
+
+show-openssl-cert-path:
+	@bash $(SCRIPTS_PATH)/show_openssl_cert_path.sh
 
 extract-public-key:
 	@bash $(SCRIPTS_PATH)/extract_public_key.sh $(CERT_PEM)
@@ -54,10 +56,13 @@ calc-digest:
 	bash $(SCRIPTS_PATH)/extract_body.sh $(CERT_PEM) | bash $(SCRIPTS_PATH)/calc_digest.sh
 
 verify-cert-chain:
-	bash $(SCRIPTS_PATH)/verify_chain.sh $(LEAF_CERT_PEM) $(INTERMEDIATE_CERM_PEM) $(TRUSTED_PEM)
+	bash $(SCRIPTS_PATH)/verify_chain.sh $(LEAF_CERT_PEM) $(INTERMEDIATE_CERM_PEM)
 
 verify-cert-single:
-	bash $(SCRIPTS_PATH)/verify_single.sh $(CERT_PEM) $(TRUSTED_PEM)
+	bash $(SCRIPTS_PATH)/verify_single.sh $(CERT_PEM)
+
+verify-custom-cert:
+	bash $(SCRIPTS_PATH)/verify_custom.sh $(CERT_PEM) $(CA_PATH) $(CA_FILE)
 
 # --------------- #
 # python commands #

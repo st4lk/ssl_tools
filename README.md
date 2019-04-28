@@ -253,5 +253,17 @@ Commands
 - **Show path with root certificates, that is used by openssl**
 
     ```bash
-    CERT_PEM=output/certificate_01.pem make verify-cert-single
+    make show-openssl-cert-path
+    ```
+
+- **Verify single certificate with openssl with custom root certificate**
+
+    ```bash
+    CERT_PEM=output/server_certificates/server-cert.pem CA_FILE=output/server_certificates/root-self-signed-cert.pem make verify-custom-cert
+    ```
+
+    OR
+    ```bash
+    cp output/server_certificates/root-self-signed-cert.pem output/server_certificates/`CERT_PEM=output/server_certificates/root-self-signed-cert.pem make show-hash-cert`.0
+    CERT_PEM=output/server_certificates/server-cert.pem CA_PATH=output/server_certificates make verify-custom-cert
     ```
