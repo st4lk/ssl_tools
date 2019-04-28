@@ -35,8 +35,11 @@ sign-cert:
 
 generate-server-certs: issue-self-signed-cert create-cert-request sign-cert
 
-hash-cert:
-	bash $(SCRIPTS_PATH)/hash_cert.sh $(CERT_PEM)
+show-hash-cert:
+	bash $(SCRIPTS_PATH)/show_hash_cert.sh $(CERT_PEM)
+
+show-hash-cert-issuer:
+	bash $(SCRIPTS_PATH)/show_hash_issuer_cert.sh $(CERT_PEM)
 
 extract-public-key:
 	@bash $(SCRIPTS_PATH)/extract_public_key.sh $(CERT_PEM)
@@ -49,6 +52,12 @@ decrypt-signature:
 
 calc-digest:
 	bash $(SCRIPTS_PATH)/extract_body.sh $(CERT_PEM) | bash $(SCRIPTS_PATH)/calc_digest.sh
+
+verify-cert-chain:
+	bash $(SCRIPTS_PATH)/verify_chain.sh $(LEAF_CERT_PEM) $(INTERMEDIATE_CERM_PEM) $(TRUSTED_PEM)
+
+verify-cert-single:
+	bash $(SCRIPTS_PATH)/verify_single.sh $(CERT_PEM) $(TRUSTED_PEM)
 
 # --------------- #
 # python commands #

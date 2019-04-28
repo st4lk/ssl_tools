@@ -158,10 +158,16 @@ Commands
     make show-requests-ca-file
     ```
 
-- **Hash certificate**
+- **Show certificate hash**
 
     ```bash
-    CERT_PEM=cert.pem make hash-cert
+    CERT_PEM=output/certificate_00.pem make show-hash-cert
+    ```
+
+- **Show issuer certificate hash**
+
+    ```bash
+    CERT_PEM=output/certificate_01.pem make show-hash-cert-issuer
     ```
 
 - **Generate RSA public and private keys using python cryptography**
@@ -230,4 +236,22 @@ Commands
 
     ```bash
     PUBLIC_KEY=output/certificate_01_public_key.pem CERT_PEM=output/certificate_00.pem make rsa-verify-cert
+    ```
+
+- **Verify certificate chain with openssl**
+
+    ```bash
+    LEAF_CERT_PEM=output/certificate_00.pem INTERMEDIATE_CERM_PEM=output/certificate_01.pem make verify-cert-chain
+    ```
+
+- **Verify single certificate (probably intermediate) with openssl**
+
+    ```bash
+    CERT_PEM=output/certificate_01.pem make verify-cert-single
+    ```
+
+- **Show path with root certificates, that is used by openssl**
+
+    ```bash
+    CERT_PEM=output/certificate_01.pem make verify-cert-single
     ```
