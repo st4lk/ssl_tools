@@ -170,6 +170,12 @@ Commands
     CERT_PEM=output/certificate_01.pem make show-hash-cert-issuer
     ```
 
+- **Show path with root certificates, that is used by openssl**
+
+    ```bash
+    make show-openssl-cert-path
+    ```
+
 - **Generate RSA public and private keys using python cryptography**
 
     ```bash
@@ -248,12 +254,6 @@ Commands
 
     ```bash
     CERT_PEM=output/certificate_01.pem make verify-cert-single
-    ```
-
-- **Show path with root certificates, that is used by openssl**
-
-    ```bash
-    make show-openssl-cert-path
     ```
 
 - **Verify single certificate with openssl with custom root certificate**
