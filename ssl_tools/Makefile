@@ -64,6 +64,9 @@ verify-cert-single:
 verify-custom-cert:
 	bash $(SCRIPTS_PATH)/verify_custom.sh $(CERT_PEM) $(CA_PATH) $(CA_FILE)
 
+decode-crl:
+	bash $(SCRIPTS_PATH)/show_crl_contents.sh $(CRL_URL) | bash $(SCRIPTS_PATH)/decode_crl.sh
+
 # --------------- #
 # python commands #
 # --------------- #

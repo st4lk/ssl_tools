@@ -267,3 +267,12 @@ Commands
     cp output/server_certificates/root-self-signed-cert.pem output/server_certificates/`CERT_PEM=output/server_certificates/root-self-signed-cert.pem make show-hash-cert`.0
     CERT_PEM=output/server_certificates/server-cert.pem CA_PATH=output/server_certificates make verify-custom-cert
     ```
+
+- **Decode CRL list**
+
+    ```bash
+    CRL_URL=http://crl.globalsign.com/gs/gsorganizationvalsha2g2.crl make decode-crl
+    ```
+
+    CRL - Certificate Revocation List.
+    The URL can be found in certificate CRL extension (CRL Distribution Points).
