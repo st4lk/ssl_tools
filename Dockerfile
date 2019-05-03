@@ -10,4 +10,4 @@ RUN chown -R ssluser:ssluser /ssl_tools
 USER ssluser
 WORKDIR /ssl_tools
 
-CMD bash
+CMD ["bash"]

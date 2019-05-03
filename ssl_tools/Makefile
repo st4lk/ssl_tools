@@ -3,6 +3,7 @@ SHELL := /bin/bash
 DOMAIN ?= www.google.com
 PORT ?= 443
 SCRIPTS_PATH ?= ./scripts
+ACME_SCRIPTS_PATH ?= ./acme_letsencrypt
 URL ?= https://localhost:4443
 OUT_PATH ?= output
 PYCRYPT_PATH ?= python_cryptography
@@ -19,6 +20,9 @@ show-cert:
 
 download-cert:
 	bash $(SCRIPTS_PATH)/show_cert.sh $(DOMAIN) $(PORT) | $(SCRIPTS_PATH)/split_certs.sh $(OUT_PATH)
+
+split-and-decode-cert:
+	cat $(CERT_PEM) | bash $(SCRIPTS_PATH)/split_certs.sh $(OUT_PATH)
 
 decode-cert:
 	bash $(SCRIPTS_PATH)/decode_cert.sh $(CERT_PEM)
@@ -103,10 +107,17 @@ rsa-verify: install-py create-pycrypt-dirs
 rsa-verify-cert: install-py create-pycrypt-dirs
 	python $(PYCRYPT_PATH)/verify_rsa_x509.py $(PUBLIC_KEY) $(CERT_PEM)
 
+create-pycrypt-dirs:
+	@mkdir -p $(PYCRYPT_OUT_PATH)
+
+# ------------- #
+# acme commands #
+# ------------- #
+issue-test-cert: install-py
+	bash $(ACME_SCRIPTS_PATH)/issue_test_cert_luadns.sh $(DOMAINS)
+
+
 install-py: .install-py
 .install-py:
 	pip install -r requirements.txt
 	@touch $@
-
-create-pycrypt-dirs:
-	@mkdir -p $(PYCRYPT_OUT_PATH)

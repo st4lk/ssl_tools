@@ -88,6 +88,15 @@ Commands
     CERT_PEM=cert.pem make decode-cert
     ```
 
+- **Split given certificate chain into separate files and decode them**
+
+    ```bash
+    CERT_PEM=output/acme/live/ssltest.tk/fullchain.pem make split-and-decode-cert
+    ```
+
+    Decoded certificates will be in `output/` folder, in `certificate_xx.pem` files.
+    `certificate_00.pem` is a leaf certificate, `certificate_01.pem` is first intermediate certificate and so on.
+
 - **Issue self signed certificate, sign server certificate with it**
 
     ```bash
@@ -276,3 +285,33 @@ Commands
 
     CRL - Certificate Revocation List.
     The URL can be found in certificate CRL extension (CRL Distribution Points).
+
+
+ACME commands
+-------------
+
+- **Issue test certificate for a given domain**
+
+    ```bash
+    DOMAINS="ssltest.tk dev.ssltest.tk" make issue-test-cert
+    ```
+
+    [luadns](http://www.luadns.com/) plugin will be used to very domain ownership (be creating TXT DNS records).
+    Luadns has free plan, that can be used for testing. That is the only reason why it is chosen.
+
+    To be able to use it, you need to specify luadns credentials:
+
+    ```bash
+    cp acme_letsencrypt/luadns_credentials/secrets.ini.example acme_letsencrypt/luadns_credentials/secrets.ini
+    ```
+
+    And fill your credentials in secrets.ini.
+    The can be found in luadns account: https://api.luadns.com/settings
+
+    If command will run successfully, the result certificate can be found in
+    ```
+    output/acme/live
+    ```
+    folder.
+
+    Note: this is a test certificate, it will not be trusted by browsers.

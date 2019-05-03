@@ -123,3 +123,4 @@ ssl_tools/output/*
 .DS_Store
 .install-py
 .vagrant/
+secrets.ini
