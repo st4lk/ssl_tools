@@ -296,7 +296,7 @@ ACME commands
     DOMAINS="ssltest.tk dev.ssltest.tk" make issue-test-cert
     ```
 
-    [luadns](http://www.luadns.com/) plugin will be used to very domain ownership (be creating TXT DNS records).
+    [luadns](http://www.luadns.com/) plugin will be used to verify domain ownership (by creating TXT DNS records).
     Luadns has free plan, that can be used for testing. That is the only reason why it is chosen.
 
     To be able to use it, you need to specify luadns credentials:
@@ -314,4 +314,4 @@ ACME commands
     ```
     folder.
 
-    Note: this is a test certificate, it will not be trusted by browsers.
+    Note: this is a test (aka staging) certificate, it will not be trusted by browsers.
