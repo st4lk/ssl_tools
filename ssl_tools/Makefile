@@ -113,8 +113,11 @@ create-pycrypt-dirs:
 # ------------- #
 # acme commands #
 # ------------- #
-issue-test-cert: install-py
+acme-issue-test-cert: install-py
 	bash $(ACME_SCRIPTS_PATH)/issue_test_cert_luadns.sh $(DOMAINS)
+
+acme-renew-cert: install-py
+	bash $(ACME_SCRIPTS_PATH)/renew_certificates.sh $(ARGS)
 
 
 install-py: .install-py

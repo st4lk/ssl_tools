@@ -293,7 +293,7 @@ ACME commands
 - **Issue test certificate for a given domain**
 
     ```bash
-    DOMAINS="ssltest.tk dev.ssltest.tk" make issue-test-cert
+    DOMAINS="ssltest.tk dev.ssltest.tk" make acme-issue-test-cert
     ```
 
     [luadns](http://www.luadns.com/) plugin will be used to verify domain ownership (by creating TXT DNS records).
@@ -306,7 +306,7 @@ ACME commands
     ```
 
     And fill your credentials in secrets.ini.
-    The can be found in luadns account: https://api.luadns.com/settings
+    They can be found in luadns account: https://api.luadns.com/settings
 
     If command will run successfully, the result certificate can be found in
     ```
@@ -315,3 +315,22 @@ ACME commands
     folder.
 
     Note: this is a test (aka staging) certificate, it will not be trusted by browsers.
+
+- **Renew test certificate**
+
+    ```bash
+    make acme-renew-cert
+    ```
+
+    Exsisting certificate(s) will be searched in `output/acme/live` folder.
+
+    If existing certificate will not expire soon (30 days), then it will not be renewed.
+
+    To force renewal use:
+
+    ```bash
+    ARGS='force' make acme-renew-cert
+    ```
+
+    Note: previous certificate will be overwritten in `output/acme/live` folder.
+    But it still can be found in `output/acme/archive` folder.
