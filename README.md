@@ -293,7 +293,7 @@ ACME commands
 - **Issue test certificate for a given domain**
 
     ```bash
-    DOMAINS="ssltest.tk dev.ssltest.tk" make acme-issue-test-cert
+    DOMAINS="ssltest.tk dev.ssltest.tk" make acme-issue-cert
     ```
 
     [luadns](http://www.luadns.com/) plugin will be used to verify domain ownership (by creating TXT DNS records).
@@ -316,7 +316,15 @@ ACME commands
 
     Note: this is a test (aka staging) certificate, it will not be trusted by browsers.
 
-- **Renew test certificate**
+- **Issue live certificate for a given domain**
+
+    ```bash
+    ACME_MODE='live' DOMAINS="ssltest.tk dev.ssltest.tk" make acme-issue-cert
+    ```
+
+    Issued certificate will be trusted by browsers.
+
+- **Renew certificate**
 
     ```bash
     make acme-renew-cert

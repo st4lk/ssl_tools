@@ -6,6 +6,7 @@ LOGS_DIR=${WORK_DIR}/logs
 
 mkdir -p ${WORK_DIR}
 mkdir -p ${LOGS_DIR}
+CREDENTIALS_PATH=${BASE_DIR}/../acme_letsencrypt/luadns_credentials/secrets.ini
 
 FORCE_RENEW=""
 
@@ -17,7 +18,7 @@ certbot renew \
   --debug \
   ${FORCE_RENEW} \
   --dns-luadns \
-  --dns-luadns-credentials ${BASE_DIR}/luadns_credentials/secrets.ini \
+  --dns-luadns-credentials ${CREDENTIALS_PATH} \
   --work-dir ${WORK_DIR} \
   --config-dir ${WORK_DIR} \
   --logs-dir ${LOGS_DIR} \

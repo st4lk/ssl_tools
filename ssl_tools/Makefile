@@ -4,6 +4,7 @@ DOMAIN ?= www.google.com
 PORT ?= 443
 SCRIPTS_PATH ?= ./scripts
 ACME_SCRIPTS_PATH ?= ./acme_letsencrypt
+ACME_MODE ?= staging
 URL ?= https://localhost:4443
 OUT_PATH ?= output
 PYCRYPT_PATH ?= python_cryptography
@@ -113,11 +114,11 @@ create-pycrypt-dirs:
 # ------------- #
 # acme commands #
 # ------------- #
-acme-issue-test-cert: install-py
-	bash $(ACME_SCRIPTS_PATH)/issue_test_cert_luadns.sh $(DOMAINS)
+acme-issue-cert: install-py
+	bash $(SCRIPTS_PATH)/acme_luadns_issue_cert.sh $(ACME_MODE) $(DOMAINS)
 
 acme-renew-cert: install-py
-	bash $(ACME_SCRIPTS_PATH)/renew_certificates.sh $(ARGS)
+	bash $(SCRIPTS_PATH)/acme_luadns_renew_certificates.sh $(ARGS)
 
 
 install-py: .install-py
