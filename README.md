@@ -342,3 +342,18 @@ ACME commands
 
     Note: previous certificate will be overwritten in `output/acme/live` folder.
     But it still can be found in `output/acme/archive` folder.
+
+- **Expand test certificate**
+
+    ```bash
+    DOMAINS="ssltest.tk dev.ssltest.tk new.ssltest.tk" make acme-expand-cert
+    ```
+
+    It will add new subdomain (new.ssltest.tk) to existing certificate.
+    Existing certificate will be searched in `output/acem/live` folder.
+
+- **Expand live certificate**
+
+    ```bash
+    ACME_MODE='live' DOMAINS="ssltest.tk dev.ssltest.tk new.ssltest.tk" make acme-expand-cert
+    ```
