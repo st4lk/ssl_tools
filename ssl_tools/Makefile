@@ -123,6 +123,9 @@ acme-renew-cert: install-py
 acme-expand-cert: install-py
 	bash $(SCRIPTS_PATH)/acme_luadns_expand_certificate.sh $(ACME_MODE) $(DOMAINS)
 
+acme-show-known-certs: install-py
+	bash $(SCRIPTS_PATH)/acme_show_known_certificates.sh
+
 
 install-py: .install-py
 .install-py:

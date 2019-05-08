@@ -332,6 +332,8 @@ ACME commands
 
     Exsisting certificate(s) will be searched in `output/acme/live` folder.
 
+    To list existing certificates, use `make acme-show-known-certs` command.
+
     If existing certificate will not expire soon (30 days), then it will not be renewed.
 
     To force renewal use:
@@ -356,4 +358,10 @@ ACME commands
 
     ```bash
     ACME_MODE='live' DOMAINS="ssltest.tk dev.ssltest.tk new.ssltest.tk" make acme-expand-cert
+    ```
+
+- **Show certificates known by acme client (certbot)**
+
+    ```bash
+    make acme-show-known-certs
     ```
