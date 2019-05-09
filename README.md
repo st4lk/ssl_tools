@@ -16,7 +16,7 @@ Choose whatever you like:
 
     ```bash
     docker build -t ssl_tools ./
-    docker run -it -p 4443:4443 --rm -v $PWD/ssl_tools:/ssl_tools --name ssl_tools ssl_tools
+    docker run -it -p 4443:4443 -p 80:80 -p 443:443 --rm -v $PWD/ssl_tools:/ssl_tools --name ssl_tools ssl_tools
     ```
 
     Shell inside docker:
@@ -365,3 +365,23 @@ ACME commands
     ```bash
     make acme-show-known-certs
     ```
+
+NGINX commands
+--------------
+
+- **Start nginx**
+
+    ```bash
+    make nginx-start
+    ```
+
+    Will start nginx, you can try it by accessing localhost: http://localhost:80
+    To test it with exact domain, update your [hosts](https://en.wikipedia.org/wiki/Hosts_(file)) file.
+    In current doc `ssltest.tk` domain is used, so it will look like this:
+
+    ```
+    127.0.0.1      ssltest.tk
+    ```
+
+    Note: tested in docker only. For other ways (local/vagrant), probably need to adjust paths in `scripts/nginx_start.sh` and in `nginx/sites-available/acme_example`.
+    Also, need to change `server_name` in `nginx/sites-available/acme_example` to match you domain.

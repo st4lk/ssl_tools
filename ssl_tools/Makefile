@@ -126,6 +126,13 @@ acme-expand-cert: install-py
 acme-show-known-certs: install-py
 	bash $(SCRIPTS_PATH)/acme_show_known_certificates.sh
 
+# -------------- #
+# nginx commands #
+# -------------- #
+
+nginx-start:
+	bash $(SCRIPTS_PATH)/nginx_start.sh
+
 
 install-py: .install-py
 .install-py:
