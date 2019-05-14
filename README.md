@@ -366,6 +366,15 @@ ACME commands
     make acme-show-known-certs
     ```
 
+- **Update nginx config with obtained certificate**
+
+    ```bash
+    DOMAINS="ssltest.tk dev.ssltest.tk" make nginx-update-cert
+    ```
+
+    If ssltest.tk certificate is not obtained yet, an attempt to do it will be made.
+    Luadns plugin will be used for obtaining.
+
 NGINX commands
 --------------
 

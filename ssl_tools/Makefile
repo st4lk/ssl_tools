@@ -126,6 +126,9 @@ acme-expand-cert: install-py
 acme-show-known-certs: install-py
 	bash $(SCRIPTS_PATH)/acme_show_known_certificates.sh
 
+nginx-update-cert: install-py
+	bash $(SCRIPTS_PATH)/acme_nginx_update_config.sh $(ACME_MODE) $(DOMAINS)
+
 # -------------- #
 # nginx commands #
 # -------------- #
