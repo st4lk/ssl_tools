@@ -2,7 +2,7 @@ server {
    listen 80;
    listen [::]:80;
 
-   server_name ssltest.tk;
+   server_name ssltest.tk dev.ssltest.tk;
 
    root /ssl_tools/nginx/html;
    index index.html;
