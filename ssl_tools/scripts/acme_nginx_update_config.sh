@@ -31,6 +31,9 @@ done
 certbot run \
   ${CERT_MODE} \
   --authenticator dns-luadns \
+  --dns-luadns \
+  --dns-luadns-credentials ${CREDENTIALS_PATH} \
+  --dns-luadns-propagation-seconds 330 \
   --installer nginx \
   --debug \
   --agree-tos \
@@ -38,6 +41,3 @@ certbot run \
   --config-dir ${WORK_DIR} \
   --logs-dir ${LOGS_DIR} \
   ${DOMAINS}
-  # --dns-luadns \
-  # --dns-luadns-credentials ${CREDENTIALS_PATH} \
-  # --dns-luadns-propagation-seconds 330 \
