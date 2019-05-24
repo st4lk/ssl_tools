@@ -12,7 +12,7 @@ Install
 
 Choose whatever you like:
 
-- docker
+- docker (all examples are tested in docker)
 
     ```bash
     docker build -t ssl_tools ./
