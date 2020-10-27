@@ -1,5 +1,5 @@
 certbot==0.34.2
 certbot-dns-luadns==0.34.2
 certbot-nginx==0.34.2
-cryptography==2.6.1
+cryptography==3.2
 requests==2.21.0
