@@ -12,6 +12,8 @@ PYCRYPT_OUT_PATH ?= $(OUT_PATH)/pycrypt
 PYCRYPT_PRIVATE_KEY ?= $(PYCRYPT_OUT_PATH)/key_private.pem
 CA_PATH ?= "0"
 CA_FILE ?= "0"
+SERVER_CERT ?= ./output/server_certificates/server-cert.pem
+SERVER_KEY ?= ./output/server_certificates/server-key.pem
 
 clean:
 	rm -rf .install-py

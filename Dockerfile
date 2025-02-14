@@ -1,4 +1,4 @@
-FROM python:3.6.8-stretch
+FROM python:3.9-bullseye
 
 RUN apt-get update -y && apt-get install -y xxd && apt-get install -y nginx
 

@@ -46,7 +46,7 @@ Choose whatever you like:
 
     ```bash
     cd /ssl_tools
-    python3.6 -m venv venv  # only first time
+    python3.8 -m venv venv  # only first time
     source venv/bin/activate
 
     make show-cert
@@ -58,7 +58,7 @@ Choose whatever you like:
 
     ```bash
     cd ssl_tools/ssl_tools
-    python3 -m venv venv  # python >= 3.6 is expected
+    python3 -m venv venv  # python >= 3.8 is expected
     source venv/bin/activate
 
     make show-cert
